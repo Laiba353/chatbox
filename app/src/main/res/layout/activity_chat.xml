@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity"
+    android:orientation="vertical"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="560dp"
+        android:background="@drawable/joker"
+
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <EditText
+            android:id="@+id/messageBox"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape"
+            android:hint="Type a message..."
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+
+
+            />
+
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/sendbtn"
+            android:id="@+id/sendtn"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/messageBox"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

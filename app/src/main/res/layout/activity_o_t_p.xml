@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OTP"
+    android:orientation="vertical"
+    android:background="@color/grey">
+    <ImageView
+        android:layout_height="150dp"
+        android:layout_width="170dp"
+        android:src="@drawable/phone"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify Your Phone Number"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:id="@+id/phoneLbl"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter OTP code to verify your phone number"
+        android:textStyle="bold"
+        android:textSize="13dp"
+        android:layout_gravity="center"
+
+        />
+    <com.mukesh.OtpView
+        android:id="@+id/otp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:inputType="number"
+        android:itemBackground="@color/white"
+        android:textColor="@android:color/black"
+        app:OtpItemCount="6"
+        app:OtpLineColor="@color/black"
+        app:OtpViewType="line"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:layout_gravity="center"
+        android:id="@+id/continueBtn"
+        android:layout_marginTop="20dp"
+        />
+
+</LinearLayout>
