@@ -1,6 +1,5 @@
 package com.example.chatsapp;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatsapp.databinding.DeleteDialogBinding;
 import com.example.chatsapp.databinding.ItemRecieveBinding;
 import com.example.chatsapp.databinding.ItemSentBinding;
 import com.github.pgreze.reactions.ReactionPopup;
@@ -130,7 +128,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+         /*   viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     View view = LayoutInflater.from(context).inflate(R.layout.delete_dialog, null);
@@ -183,7 +181,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
                     return false;
                 }
-            });
+            });*/
         } else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
