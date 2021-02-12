@@ -3,7 +3,7 @@ package com.example.chatsapp;
 public class Message {
     private String message,messageId,senderId;
     private long timestamp;
-    private int feeling;
+    private int feeling=-1;
 
     public Message() {
     }
