@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/feeling"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/message"
         app:layout_constraintEnd_toEndOf="@+id/message"
