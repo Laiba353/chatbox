@@ -48,32 +48,14 @@
             />
 
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/collections"
-            android:layout_toRightOf="@+id/messageBox"
-            android:layout_marginLeft="2dp"
-            android:id="@+id/collections"
-            android:layout_marginTop="10dp"
 
-            />
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/camera"
-            android:id="@+id/camera"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/collections"
-            android:layout_marginTop="10dp"
-            />
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/sendbtn"
             android:id="@+id/sendtn"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/camera"
+            android:layout_toRightOf="@+id/messageBox"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             />
