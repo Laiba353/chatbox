@@ -1,5 +1,6 @@
 package com.example.chatsapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatsapp.databinding.DeleteDialogBinding;
 import com.example.chatsapp.databinding.ItemRecieveBinding;
 import com.example.chatsapp.databinding.ItemSentBinding;
 import com.github.pgreze.reactions.ReactionPopup;
@@ -64,11 +66,12 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         Message message = messages.get(position);
 
         int reactions[] = new int[]{
-                R.drawable.thumbdown,
                 R.drawable.thumb,
+                R.drawable.thumbdown,
+                R.drawable.heart,
                 R.drawable.thanks,
                 R.drawable.sorry,
-                R.drawable.heart,
+
         };
 
         ReactionsConfig config = new ReactionsConfigBuilder(context)
@@ -127,6 +130,60 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 }
             });
 
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    View view = LayoutInflater.from(context).inflate(R.layout.delete_dialog, null);
+                    DeleteDialogBinding binding = DeleteDialogBinding.bind(view);
+                    AlertDialog dialog = new AlertDialog.Builder(context)
+                            .setTitle("Delete Message")
+                            .setView(binding.getRoot())
+                            .create();
+
+                    binding.everyone.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            message.setMessage("This message is removed.");
+                            message.setFeeling(-1);
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageId()).setValue(message);
+
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(receiverRoom)
+                                    .child("messages")
+                                    .child(message.getMessageId()).setValue(message);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child("chats")
+                                    .child(senderRoom)
+                                    .child("messages")
+                                    .child(message.getMessageId()).setValue(null);
+                            dialog.dismiss();
+                        }
+                    });
+
+                    binding.cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+                    return false;
+                }
+            });
         } else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
             viewHolder.binding.message.setText(message.getMessage());
@@ -166,8 +223,8 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     }
 
     public class ReceiverViewHolder extends RecyclerView.ViewHolder {
-ItemRecieveBinding binding;
 
+        ItemRecieveBinding binding;
 
         public ReceiverViewHolder(@NonNull View itemView) {
             super(itemView);

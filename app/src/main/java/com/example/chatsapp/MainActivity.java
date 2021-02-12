@@ -1,14 +1,12 @@
 package com.example.chatsapp;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chatsapp.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +36,7 @@ UsersAdapter usersAdapter;
                 for(DataSnapshot snapshot1: snapshot.getChildren())
                 {
                     User user=snapshot1.getValue(User.class);
+                    if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
                     users.add(user);
                 }
                 usersAdapter.notifyDataSetChanged();
@@ -54,24 +53,9 @@ UsersAdapter usersAdapter;
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.topmenu, menu);
-        return super.onCreateOptionsMenu(menu);
 
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.search:
-                Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.settings:
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
 
 }
